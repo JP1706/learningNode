@@ -2,7 +2,6 @@ const fileUploadModel = require("../models/FileUploadModel")
 const multer = require("multer")
 const path = require("path")
 const CloudinaryUtil = require("../utils/CloudinaryUtil")
-const { model } = require("mongoose")
 
 //Storage Engine
 const Storage = multer.diskStorage({

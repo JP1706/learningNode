@@ -27,6 +27,14 @@ app.use(queryRoutes)
 var fileUploadRoutes = require("./src/routes/FileUploadRoutes")
 app.use(fileUploadRoutes)
 
+// Importing Habit Routes
+var habitRoutes = require("./src/routes/HabitRoutes")
+app.use(habitRoutes)
+
+// Importing Report Routes
+var reportRoutes = require("./src/routes/ReportRoutes")
+app.use(reportRoutes)
+
 // Database Connection
 mongoose.connect("mongodb://127.0.0.1:27017/25_node_internship").then(()=>{
     console.log("Database Connected Successfully")

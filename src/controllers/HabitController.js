@@ -1,12 +1,12 @@
-const habitModel = require("../models/HabitModel")
+const habitModel = require("../models/HabitsModel")
 
 
 const addHabit = async (req, res) => {
 
     try {
-        console.log(res.body);
+        // console.log(res.body);
         const savedHabit = await habitModel.create(req.body)
-        console.log(savedHabit);
+        // console.log(savedHabit);
 
         res.status(201).json({
             message: "habit added sucessfully",

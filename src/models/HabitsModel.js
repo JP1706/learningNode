@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
 const habitSchema = new Schema({
-    fullname:{
+    fullName:{
         type:String,
         require:true
     },
