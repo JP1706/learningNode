@@ -1,0 +1,60 @@
+// console.log("Hello")
+// var user = require('./user')
+// console.log(user)
+// user.printUserData()
+
+var express = require("express")
+
+var app = express()
+
+app.get("/test", (req, res) => {
+    console.log("Get API Called")
+    res.send("Your API is Called")
+})
+
+
+app.get("/user", (req,res) => {
+    res.json({
+        message : "Json Object Called",
+        data : ['ram', 'shyam', 'geeta', 'seeta']
+    })
+})
+
+app.get("/employee", (req, res) => {
+    res.json({
+            message: "Employee API Called",
+            data : [
+                {
+                    name : "Jeni",
+                    age : 21,
+                    salary : 23000
+                },
+                {
+                    name : "Ram",
+                    age : 22,
+                    salary : 23000
+                },
+                {
+                    name : "Shyam",
+                    age : 22,
+                    salary : 23000
+                },
+                {
+                    name : "Seeta",
+                    age : 25,
+                    salary : 23000
+                },
+                {
+                    name : "Geeta",
+                    age : 23,
+                    salary : 25000
+                }
+            ]
+    })
+})
+
+// Server Creation
+const PORT = 3000
+app.listen(PORT, ()=> {
+    console.log("Server Started at port ", PORT)
+})
