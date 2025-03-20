@@ -40,4 +40,39 @@ const getAllHabits = async (req, res) => {
     }
 }
 
-module.exports = { addHabit, getAllHabits }
+const getAllHabitsById = async ( req, res) => {
+    try {
+        const allHabits = await habitModel.find({ userId : req.params.id})
+
+        if(allHabits.length === 0) {
+            res.status(404).json({
+                message : "Habits Not Submitted Yet"
+            })
+        }
+        res.status(201).json({
+            message : "Habits Found Successfully",
+            data : allHabits
+        })
+    }
+    catch(err) {
+        message : err.message
+    }
+}
+
+const updateHabits = async (req, res) => {
+    try {
+        const updateHabit = await habitModel.findByIdAndUpdate(req.params.id, req.body, { new: true })
+
+        res.status(201).json({
+            message: "Habits Updated Successfully",
+            data: updateHabit
+        })
+    }
+    catch (err) {
+        res.status(500).json({
+            message: err.message
+        })
+    }
+}
+
+module.exports = { addHabit, getAllHabits, updateHabits, getAllHabitsById }
