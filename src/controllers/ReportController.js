@@ -4,15 +4,15 @@ const multer = require("multer")
 
 const CloudinaryUtil = require("../utils/CloudinaryUtil")
 
-// Storage
-const Storage = multer.diskStorage({
-    destination: "./perpetratorsImages",
-    filename: function (req, file, cb) {
-        cb(null, file.originalname)
+//storage
+ const Storage = multer.diskStorage({
+    destination: "prepetratorsImages",
+    filename: function (req,file,cb){
+        cb(null,file.originalname)
     }
-})
+ })
 
-// Multer Object
+ // Multer Object
 const upload = multer({
     storage: Storage
 }).single("image")

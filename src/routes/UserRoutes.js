@@ -12,6 +12,7 @@ routes.delete("/user/:id", userController.deleteUser)
 routes.get("/user/:id", userController.getUserById)
 routes.post("/signup", userController.signUp)
 routes.post("/login", userController.login)
+routes.post("/forgotPassword", userController.forgotPassword)
 
 
 // Exporting Routes
