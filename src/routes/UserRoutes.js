@@ -13,6 +13,7 @@ routes.get("/user/:id", userController.getUserById)
 routes.post("/signup", userController.signUp)
 routes.post("/login", userController.login)
 routes.post("/forgotPassword", userController.forgotPassword)
+routes.post("/resetPassword", userController.resetPassword)
 
 
 // Exporting Routes

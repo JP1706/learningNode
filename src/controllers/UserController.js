@@ -155,17 +155,37 @@ const forgotPassword = async (req, res) => {
         await mailUtil.sendingMail(foundUser.email, "Reset Password", mailContent)
 
         res.json({
-            message : "Sending Mail for password Reset"
+            message: "Sending Mail for password Reset"
         })
     }
-    else{
+    else {
         res.json({
-            message : "User Not Found"
+            message: "User Not Found"
         })
+    }
+}
+
+const resetPassword = async (req, res) => {
+    const token = req.body.token
+    const newPassword = req.body.password
+    try {
+        const userFromToken = jwt.verify(token, secret)
+
+        const salt = bcrypt.genSaltSync(10)
+        const hashedPasssword = bcrypt.hashSync(newPassword, salt)
+
+        const updatedUser = await userModel.findByIdAndUpdate(userFromToken._id, { password: hashedPasssword })
+
+        res.status(201).json({
+            message: "User Updated Successfully"
+        })
+    }
+    catch (err) {
+        message: err.message
     }
 }
 
 // Export Controller
 module.exports = {
-    getUsers, addUser, deleteUser, getUserById, signUp, login, forgotPassword
+    getUsers, addUser, deleteUser, getUserById, signUp, login, forgotPassword, resetPassword
 }
