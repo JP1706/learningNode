@@ -27,6 +27,9 @@ const habitSchema = new Schema({
     additionalComments:{
         type:String,
         require:true
+    },
+    userId : {
+        type : Schema.Types.ObjectId
     }
 })
 module.exports = mongoose.model("habit",habitSchema)

@@ -42,7 +42,7 @@ const getAllHabits = async (req, res) => {
 
 const getAllHabitsById = async ( req, res) => {
     try {
-        const allHabits = await habitModel.find({ userId : req.params.id})
+        const allHabits = await habitModel.findOne({ userId : req.params.id})
 
         if(allHabits.length === 0) {
             res.status(404).json({
