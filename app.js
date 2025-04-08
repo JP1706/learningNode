@@ -35,6 +35,11 @@ app.use(habitRoutes)
 var reportRoutes = require("./src/routes/ReportRoutes")
 app.use(reportRoutes)
 
+// Importing Admin Routes
+const adminRoutes = require("./src/routes/AdminRoutes");
+app.use(adminRoutes);
+
+
 // Database Connection
 mongoose.connect("mongodb://127.0.0.1:27017/25_node_internship").then(()=>{
     console.log("Database Connected Successfully")
