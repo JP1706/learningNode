@@ -39,6 +39,10 @@ app.use(reportRoutes)
 const adminRoutes = require("./src/routes/AdminRoutes");
 app.use(adminRoutes);
 
+// Importing Counselor Routes
+var counselorRoutes = require("./src/routes/CounselorRoutes");
+app.use(counselorRoutes);
+
 
 // Database Connection
 mongoose.connect("mongodb://127.0.0.1:27017/25_node_internship").then(()=>{
