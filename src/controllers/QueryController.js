@@ -1,3 +1,14 @@
+const getQueryDetails = async (req, res) => {
+  try {
+    const query = await queryModel.findById(req.params.queryId);
+    if (!query) {
+      return res.status(404).json({ message: "Query not found" });
+    }
+    res.status(200).json({ data: query });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
 var queryModel = require("../models/QueryModel")
 
 const addQuery = async(req, res) => {
@@ -57,4 +68,4 @@ const getQueryById = async (req, res) => {
     }
 }
 
-module.exports = {addQuery, getQueries, getQueryById}
+module.exports = {addQuery, getQueries, getQueryById, getQueryDetails}

@@ -1,3 +1,14 @@
+const getReportById = async (req, res) => {
+  try {
+    const report = await reportModel.findById(req.params.reportId);
+    if (!report) {
+      return res.status(404).json({ message: "Report not found" });
+    }
+    res.status(200).json({ data: report });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
 const reportModel = require("../models/ReportModel")
 
 const multer = require("multer")
@@ -88,5 +99,5 @@ const getAllReports = async (req, res) => {
 }
 
 module.exports = {
-    addReport, getReportsByUserId, getAllReports
+    addReport, getReportsByUserId, getAllReports, getReportById
 }

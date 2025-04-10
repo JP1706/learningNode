@@ -1,3 +1,14 @@
+const getHabitById = async (req, res) => {
+  try {
+    const habit = await habitModel.findById(req.params.habitId);
+    if (!habit) {
+      return res.status(404).json({ message: "Habit not found" });
+    }
+    res.status(200).json({ data: habit });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
 const habitModel = require("../models/HabitsModel")
 
 
@@ -42,7 +53,7 @@ const getAllHabits = async (req, res) => {
 
 const getAllHabitsById = async ( req, res) => {
     try {
-        const allHabits = await habitModel.findOne({ userId : req.params.id})
+        const allHabits = await habitModel.findById({ userId : req.params.id})
 
         if(allHabits.length === 0) {
             res.status(404).json({
@@ -75,4 +86,4 @@ const updateHabits = async (req, res) => {
     }
 }
 
-module.exports = { addHabit, getAllHabits, updateHabits, getAllHabitsById }
+module.exports = { addHabit, getAllHabits, updateHabits, getAllHabitsById, getHabitById }
